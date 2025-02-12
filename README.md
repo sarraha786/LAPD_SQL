@@ -5,18 +5,25 @@ This project analyzes the LAPD crime dataset from 2023 to identify crime pattern
 
 Using SQL queries with JOINs, subqueries, GROUP BY, HAVING, and aggregate functions, this project explores various aspects of crime in Los Angeles, including crime frequency, victim demographics, crime-heavy areas, weapon usage, and the most vulnerable premises.
 
-Database Design & Normalization
-To ensure efficiency and eliminate redundancy, the database was normalized to Third Normal Form (3NF). The original dataset contained nearly a million rows, which was too large to process effectively. Therefore, I filtered it down to only include incidents from 2023, reducing the dataset to 230,000 rows, allowing for more efficient querying while maintaining relevant insights.
+Data Processing & CSV Breakdown:
+To ensure efficiency and eliminate redundancy, I normalized the database to Third Normal Form (3NF). The original dataset contained nearly a million rows, which was too large to process effectively. Therefore, I filtered it down to only include incidents from 2023, reducing the dataset to 230,000 rows, allowing for more efficient querying while maintaining relevant insights.Before loading the data into SQL, I broke the original dataset into 7 separate CSV files, each corresponding to a different table in the database:
 
-Key normalization steps included:
+Incidents.csv – Core dataset containing all reported crimes.
+Crime_Details.csv – Information on crime types and descriptions.
+Victim_Details.csv – Demographic details of victims.
+Weapons.csv – Weapons involved in incidents.
+Locations.csv – Area names and identifiers.
+Premises.csv – Types of locations where crimes occurred.
+Status.csv – Incident status codes.
+This approach ensured that data was structured relationally before importing into SQL, optimizing storage and query performance.
 
-Primary Table: The Incidents table serves as the central hub, connecting all other tables through foreign keys.
-Separate Tables: Crime details, victims, weapons, and premises were stored in dedicated tables, reducing redundancy.
-Elimination of Repeating Groups: Crime codes, weapon types, and locations were structured into separate tables using one-to-many relationships.
-Foreign Keys for Data Integrity: Instead of inserting arbitrary IDs, I leveraged existing police codes for crime types, weapons, and locations to ensure consistency.
-This approach optimized storage, improved query performance, and maintained data integrity, making it easier to analyze crime patterns.
+Raw SQL Dump & Code:
+The raw SQL dump of the fully structured database can be found in:
+📄 annotated-crime_data_LA-1.sql.pdf
+The questions, SQL queries, and answers related to the analysis can be found in:
+📄 Questions + Code + Answers.pdf
 
-Key Questions Explored & Findings
+Key Questions Explored & Findings:
 1. Crime Distribution by Area:
 Central LA had the highest crime rate, followed by 77th Street, Pacific, and Southwest LA.
 These areas should be the focus of targeted crime reduction strategies.
